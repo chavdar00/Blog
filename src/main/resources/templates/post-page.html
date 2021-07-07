@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="eu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragmets/header :: header"></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="col-md-2" ></div>
+<div  class="col-md-8">
+    <div style="border-style: solid;border-color: seagreen; padding: 15px">
+    <div th:if="${Flag}" style="float: right">
+        <form th:action="@{/post/{id}/edit(id=${id})}" method="get" style="display: inline-block">
+            <button type="submit" th:text="Edit" class="btn btn-info btn-lg"></button>
+        </form>
+        <form th:action="@{/post/{id}/delete(id=${id})}" method="post" style="display: inline-block">
+            <button type="submit" th:text="Delete" class="btn btn-danger btn-lg"></button>
+        </form>
+    </div>
+<h1 th:text="${post.getTitle()}" ></h1>
+        <a th:href="@{/user/{id}(id=${post.getUser().getId()})}">
+            <h2 th:text="${post.getUser().getUserName()}" style="display: inline-block;"></h2>
+        </a>
+    <h3 th:text="${post.getUploadAt()}" style="float: right"></h3>
+    <p th:text="${post.getContent()}"></p>
+    <form method="post" th:action="@{/comment}"style="display: inline-block;margin-top: 65px">
+        <div style="display: inline-block"><label>Write comment</label>
+            <textarea class="form-control" placeholder="Content" type="text" id="content" name="content"  rows="6" cols="60"></textarea>
+            <input  class="form-control" type="hidden" id="postId" name="postId" th:value="${post.getPostId()}">
+        <button type="submit" value="Add" class="btn btn-success btn-lg">Add Comment</button>
+    </div>
+    </form>
+    </div>
+    <h1 style="text-align: center">Comments</h1>
+    <div th:each="comment:${comments}">
+        <div style="border-style: solid;border-color: seagreen;margin-top: 10px;padding-left: 10px;padding-right: 10px">
+            <h4 th:text="${comment.getUser().getUserName()}"  style="margin-bottom: 15px"></h4>
+            <p th:text="${comment.getContent()}" style=""></p>
+        </div>
+    </div>
+
+
+</div>
+<div class="col-md-2" ></div>
+</body>
+</html>

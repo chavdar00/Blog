@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="eu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create post</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragmets/header :: header"></div>
+
+<div class="row" style="width: 99%;">
+    <div class="col-md-3" ></div>
+    <div class="col-md-6">
+        <h2 style="text-align: center;margin-top: 60px">Create post</h2>
+        <div style="border-style: solid;border-color: seagreen; padding: 15px">
+        <form method="post" th:action="@{/post}">
+            <label>Title</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="Title">
+            <label>Content</label>
+            <textarea type="text" id="content" name="content" class="form-control" placeholder="Content" rows="8" cols="70"></textarea>
+            <button type="submit" value="Add" class="btn btn-success btn-lg" style="margin-top: 10px">Add Post</button>
+        </form></div>
+    </div>
+    <div class="col-md-3" ></div>
+</div>
+</body>
+</html>

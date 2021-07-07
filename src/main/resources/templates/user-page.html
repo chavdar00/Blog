@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="eu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="fragmets/header :: header"></div>
+<br/>
+<br/>
+<br/>
+<div class="row" style="width: 99%">
+    <div  class="col-md-6">
+        <h2 style="text-align: center">Profile</h2>
+        <div style="margin-left:20%; border-style: solid; border-color: coral; margin-top: 10px; padding-left: 5%">
+            <h1 th:text="${user.getFirstName()}+' '+ ${user.getLastName()}"></h1>
+            <label style="display: inline-block;">Username: </label>
+            <h2 th:text="${user.getUserName()}" style="display: inline-block;"></h2>
+            <br/>
+            <label>Email: </label>
+            <h2 th:text="${user.getEmail()}" style="display: inline-block;"></h2>
+            <form th:action="@{/user/edit}" method="get" th:if="${Flag}">
+                <button type="submit" th:text="Edit" class="btn btn-success btn-lg" style="margin-bottom: 10px"></button>
+            </form>
+        </div>
+    </div>
+    <h2 style="text-align: center">Posts</h2>
+    <div class="col-md-5"  style="border-style: solid;border-color: coral;">
+
+        <div th:each="userPost:${userPosts}" style="margin-right:25%">
+            <a th:href="@{/post/{id}(id=${userPost.getPostId()})}" style="text-decoration: none;">
+            <h2 th:text="${userPost.getTitle()}"></h2></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragmets/header :: header"></div>
+<div class="row" style="width: 99%;">
+    <div class="col-md-3" ></div>
+    <div class="col-md-6" >
+        <h2 style="text-align: center;margin-top: 60px">Edit post</h2>
+        <div style="border-style: solid;border-color: seagreen; padding: 15px">
+        <form method="post" th:action="@{/post/edit}">
+            <label>Title</label>
+            <input type="text" id="title" name="title" class="form-control" th:value="${post.getTitle()}">
+            <label>Content</label>
+            <textarea type="text" id="content" name="content" class="form-control"th:text="${post.getContent()}" rows="8" cols="80"></textarea>
+            <button type="submit" value="Edit" class="btn btn-success btn-lg" style="margin-top: 10px">Edit Post</button>
+            <input type="hidden"  id="postId" name="postId" th:value="${post.getPostId()}">
+        </form>
+        </div>
+    </div>
+    <div class="col-md-3" ></div>
+</div>
+</body>
+</html>

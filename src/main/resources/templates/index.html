@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="eu" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:replace="fragmets/header :: header">
+</div>
+<br>
+<br>
+<br>
+<h1 style="text-align: center">Welcome to home page</h1>
+ <div class="row" th:each="post:${posts}" style="width: 99%">
+  <div th:replace="fragmets/post-card.html::postCard (title=${post.getTitle()},
+    content=${post.getContent()},
+    id=${post.getPostId()},
+    userRepository=${post.getUser().getUserName()},
+    uploaded=${post.getUploadAt()},
+    userId=${post.getUser().getId()}
+    )"></div>
+ </div>
+</body>
+</html>

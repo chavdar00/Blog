@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="eu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragmets/header :: header"></div>
+<h2 style="text-align: center;margin-top: 60px">User Registration</h2>
+<div class="row" style="width: 99%">
+<div class="col-md-4" ></div>
+<div class="col-md-4" style="border-style: solid;border-color: seagreen; padding: 15px">
+  <p>
+    <i th:if="${error != null}" th:text="${error}" class="error"/>
+  </p>
+  <form method="post" th:action="@{/register}">
+    <label>Username</label>
+    <input type="text" id="userName" name="userName" class="form-control">
+    <label>First Name</label>
+    <input type="text" id="firstName" name="firstName" class="form-control">
+    <label>Last Name</label>
+    <input type="text" id="lastName" name="lastName" class="form-control">
+    <label>Password</label>
+    <input type="password" id="password" name="password" class="form-control">
+    <label>Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+    <label>Email</label>
+    <input type="text" id="email" name="email" class="form-control">
+    <button type="submit" value="Register" class="btn btn-success btn-lg" style="margin-top: 10px">Register</button>
+  </form>
+</div>
+<div class="col-md-4" ></div>
+</div>
+</body>
+</html>
